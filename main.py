@@ -1,5 +1,9 @@
 import discord
 import os
+import logging
+import random
+
+logging.basicConfig(level=logging.INFO)
 
 from dotenv import load_dotenv
 
@@ -14,7 +18,7 @@ client = discord.Client()
 async def on_ready():
     print(f"{client.user} has connected to Discord.")
 
-
+@client.event
 async def on_message(message):
     if message.author == client.user:
         return
@@ -30,6 +34,9 @@ async def on_message(message):
         else:
             results = "Tails"
         await message.channel.send(results)
+    
+    if message.content.startswith("$goodbye"):
+        await message.channel.send("Later, gator!")
 
 
 client.run(token)
