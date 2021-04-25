@@ -35,6 +35,9 @@ async def on_message(message):
             results = "Tails"
         await message.channel.send(results)
     
+#    if "smack travis" in message_content:
+#        if 
+    
     if message.content.startswith("$goodbye"):
         await message.channel.send("Later, gator!")
 
